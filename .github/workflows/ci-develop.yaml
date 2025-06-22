@@ -1,28 +1,14 @@
 name: CI - Linting Check
 
-on:
-  pull_request:
-    branches: [ develop ]
+on: [pull_request]
 
 jobs:
   lint:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
         with:
-          node-version: 16
-
-      - name: Install linters
-        run: |
-          npm install -g htmlhint stylelint stylelint-config-standard
-
-      - name: Lint HTML files
-        run: htmlhint "src/*/.html" .htmlhintrc.json
-
-      - name: Lint CSS files
-        run: stylelint "styles/*/.css" --config .stylelintrc.json
+          node-version: 18
+      - run: npm install
+      - run: npm run lint
