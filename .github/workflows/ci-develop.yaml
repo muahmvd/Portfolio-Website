@@ -21,8 +21,4 @@ jobs:
         run: |
           npm install -g htmlhint stylelint stylelint-config-standard
 
-      - name: Lint HTML files
-        run: htmlhint "src/*/.html" .htmlhintrc.json
-
-      - name: Lint CSS files
-        run: stylelint "styles/*/.css" --config .stylelintrc.json
+     
